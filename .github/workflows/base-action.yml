@@ -30,7 +30,9 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Run a one-line script
-        run: echo Here is what i got from UI  ${{ inputs.message }}
+        env:
+            MESSAGE: ${{ inputs.message }}   
+        run: "echo Here is what i got from UI $MESSAGE"
 
       - name: Run a multi-line script
         run: |
