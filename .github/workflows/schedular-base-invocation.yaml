@@ -1,0 +1,14 @@
+
+name: github action session - Schedule base invocation
+
+on:
+  schedule:
+    - cron:  '*/30 * * * * *'
+
+jobs:
+  run-shell-command:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v3
+      - name: Schedule base invocation
+        run: echo "Invoked by scheculer"
