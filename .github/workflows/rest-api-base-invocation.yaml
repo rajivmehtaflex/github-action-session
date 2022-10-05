@@ -16,8 +16,10 @@ jobs:
           echo "${{github.event.client_payload.lastName}}"
       - name: javascript base actions
         id: greet
+        env: 
+          WHO_TO_GREET: ${{github.event.client_payload.name}}
         uses: actions/hello-world-javascript-action@main
         with:
-          who-to-greet: 'Consumer'
+          who-to-greet: $WHO_TO_GREET
       - name: display output from javascript based actions
-        run: echo "${{ steps.greet.outputs.time }}"
+        run: echo "Hello ${{github.event.client_payload.name}} --> Time is ${{ steps.greet.outputs.time }}"
