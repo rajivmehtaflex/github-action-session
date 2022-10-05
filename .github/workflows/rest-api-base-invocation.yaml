@@ -1,5 +1,5 @@
 
-name: github action session
+name: github action session - rest api base invocation
 
 on: 
   repository_dispatch:
