@@ -1,4 +1,5 @@
-name: Start the execution
+
+name: github action session - rest api base invocation
 
 on: 
   repository_dispatch:
@@ -11,17 +12,5 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check payload
         run: |
-          echo "${{github.event.build.name}}"
-          echo "${{github.event.build.lastName}}"
-      - name: javascript base actions
-        id: greet
-        uses: actions/hello-world-javascript-action@main
-        with:
-          who-to-greet: 'Mantra Mehta'
-      - name: display output from javascript based actions
-        run: echo "${{ steps.greet.outputs.time }}"
-      - name: execute make file command
-        run: |
-          make listdir
-          echo $GITHUB_SHA
-          echo $GITHUB_REPOSITORY
+          echo "${{github.event.client_payload.name}}"
+          echo "${{github.event.client_payload.lastName}}"
