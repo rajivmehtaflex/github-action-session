@@ -3,6 +3,24 @@ name: github action session
 
 on:
   workflow_dispatch:
+      inputs:
+            logLevel:
+              description: 'Log level'
+              required: true
+              default: 'warning'
+              type: choice
+              options:
+              - info
+              - warning
+              - debug
+            tags:
+              description: 'Test scenario tags'
+              required: false
+              type: boolean
+            messages:
+              description: 'Pass on some string stuff'
+              required: false
+
 
 jobs:
   build:
