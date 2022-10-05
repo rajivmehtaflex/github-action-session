@@ -1,0 +1,34 @@
+name: conversationbot
+
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: Enter message that transfer to discord
+        required: true
+
+jobs:
+  connect_with_bot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: OS level modifications.
+        run: |
+          echo 'Gajraj123'
+          echo $GITHUB_WORKSPACE
+      - name: Discord notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: 'Here is the message:: ${{github.event.inputs.message}}'          
+
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: general
+          SLACK_ICON: https://github.com/rtCamp.png?size=48
+          SLACK_USERNAME: rtCamp
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}  
+          MSG_MINIMAL: true        
+          SLACK_TITLE: '${{github.event.inputs.message}} :white_check_mark:'

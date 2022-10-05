@@ -23,3 +23,7 @@ jobs:
           who-to-greet: $WHO_TO_GREET
       - name: display output from javascript based actions
         run: echo "Hello ${{github.event.client_payload.name}} --> Time is ${{ steps.greet.outputs.time }}"
+      - name: utilize secrets
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: echo "Here is the secrets $DISCORD_WEBHOOK"
