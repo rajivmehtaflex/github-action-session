@@ -4,6 +4,8 @@ name: github action session - rest api base invocation
 on: 
   repository_dispatch:
     types: [build]
+env: 
+  WHO_TO_GREET: ${{github.event.client_payload.name}}
 
 jobs:
   run-shell-command:
